@@ -1,0 +1,51 @@
+<div class="container my-5 w-50">
+  <div class="shadow p-3 mb-5 bg-white rounded">
+    <h2 translate style="text-align: center">S1mple E-commerce</h2>
+    <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+      <div class="form-group">
+        <label class="d-block">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="username"
+            autocomplete="username"
+            [placeholder]="'Username' | translate"
+          />
+          <span hidden translate>Username</span>
+          <small
+            [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
+            class="text-danger"
+            translate
+          >
+            Username is required
+          </small>
+        </label>
+        <label class="d-block">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            autocomplete="current-password"
+            [placeholder]="'Password' | translate"
+            required
+          />
+          <span hidden translate>Password</span>
+          <small
+            [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
+            class="text-danger"
+            translate
+          >
+            Password is required
+          </small>
+        </label>
+      </div>
+      <button class="btn btn-primary w-100" type="submit" [disabled]="loginForm.invalid">
+        <i class="fas fa-cog fa-spin"></i>
+        <span translate>Login</span>
+      </button>
+    </form>
+    <div class="card-body" style="text-align: end">
+      <a routerLink="/register">Register here</a>
+    </div>
+  </div>
+</div>

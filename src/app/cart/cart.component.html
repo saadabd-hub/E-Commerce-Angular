@@ -1,0 +1,40 @@
+<main class="container">
+  <div class="row row-cols-2">
+    <div class="col-8">
+      <div class="card mb-3" *ngFor="let cart of cartItems">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img [src]="cart.products.picture" class="card-img" />
+          </div>
+          <div class="col-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ cart.products.productName }}</h5>
+              <p class="card-text">
+                {{ cart.totalPrice | currency: 'IDR':'symbol-narrow' }}
+              </p>
+            </div>
+            <div class="card-footer">
+              Quantity:<button class="btn btn-sm rounded-circle" (click)="decreamentQuantity(cart._id, cart)">
+                <i class="fas fa-minus mr-1 ml-3"></i></button
+              >{{ cart.quantity
+              }}<button class="btn btn-sm rounded-circle" (click)="increamentQuantity(cart._id, cart)">
+                <i class="fas fa-plus ml-1"></i></button
+              ><button class="btn btn-sm rounded-circle" (click)="deleteCart(cart._id)">
+                <i class="fas fa-trash mt-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">Ringkasan Belanja</div>
+        <div class="card-body">
+          <p class="card-text">Total Harga: {{ totalBelanja | currency: 'IDR':'symbol-narrow' }}</p>
+          <a href="#" class="btn btn-primary w-100">Check Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

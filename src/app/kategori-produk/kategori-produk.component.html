@@ -1,0 +1,36 @@
+<main class="container my-5">
+  <div class="jumbotron">
+    <h2>Anda sedang melihat produk {{ kategori }}</h2>
+  </div>
+  <div class="row">
+    <div
+      class="col-md-3"
+      *ngFor="
+        let produk of productKategori | paginate: { itemsPerPage: pageSize, currentPage: page, totalItems: totalRecord }
+      "
+    >
+      <figure class="card card-product-grid">
+        <a routerLink="/detail/{{ produk._id }}"
+          ><div class="img-wrap">
+            <img [src]="produk.picture" class="img-fluid" /></div
+        ></a>
+        <figcaption class="info-wrap">
+          <div class="fix-height">
+            <a routerLink="/detail/{{ produk._id }}" class="title">{{ produk.productName | slice: 0:43 }}...</a>
+            <div class="price-wrap mt-2">
+              <span class="price">{{ produk.price | currency: 'IDR':'symbol-narrow' }}</span>
+            </div>
+          </div>
+          <button class="btn btn-block btn-primary mt-4" (click)="addToCart(produk)">Add to cart</button>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    responsive="true"
+    (pageChange)="changePageHandler($event)"
+  ></pagination-controls>
+</main>

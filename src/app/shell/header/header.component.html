@@ -1,0 +1,39 @@
+<header>
+  <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">S1mple</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </div>
+      <ul class="navbar-nav ml-2 navbar-right">
+        <li class="nav-item mr-4">
+          <a class="nav-link" href="#">Kategori</a>
+        </li>
+        <li class="nav-item mr-4">
+          <a class="nav-link" routerLink="/shopcart" routerLinkActive="active"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+        <li class="nav-item mr-4">
+          <a *ngIf="!this.authenticationService.isLogin" class="nav-link" routerLink="/login"
+            ><i class="fas fa-sign-in-alt"></i
+          ></a>
+          <a *ngIf="this.authenticationService.isLogin" class="nav-link" (click)="logout()"
+            ><i class="fas fa-sign-out-alt"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

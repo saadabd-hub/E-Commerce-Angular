@@ -1,0 +1,16 @@
+<div class="card" style="text-overflow: ellipsis; height: 100%">
+  <a routerLink="/detail/{{ productItems._id }}"
+    ><div style="max-height: 200px; max-width: 200px">
+      <img class="card-img-top img-responsive" [src]="productItems.picture" alt="Card image" /></div
+  ></a>
+  <div class="card-body" style="padding: 0px 5px">
+    <p class="left-section-title-ellipsis card-title" style="font-size: 14px">
+      {{ productItems.productName | slice: 0:29 }}...
+    </p>
+    <p>
+      <b class="text-price">{{ productItems.price | currency: 'IDR':'symbol-narrow' }}</b
+      ><br />
+    </p>
+    <button class="btn btn-primary my-2" (click)="addProductToCart()">Add Cart+</button>
+  </div>
+</div>
